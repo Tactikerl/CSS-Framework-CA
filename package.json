@@ -1,0 +1,24 @@
+{
+  "name": "social-media-app",
+  "version": "0.0.1",
+  "description": "social media app delivery for noroff",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "sass src/scss:dist/css",
+    "watch": "sass --watch src/scss:dist/css & live-server",
+    "serve": "live-server"
+  },
+  "keywords": [
+    "social",
+    "media",
+    "bootstrap",
+    "sass"
+  ],
+  "author": "Karl-Morten Kvammen <karlmkvammen@hotmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "live-server": "^1.2.2",
+    "sass": "^1.54.8"
+  }
+}

@@ -1,0 +1,9 @@
+$blue: blue;
+
+.test {
+  display: block;
+
+  &-button {
+    background-color: $blue;
+  }
+}
