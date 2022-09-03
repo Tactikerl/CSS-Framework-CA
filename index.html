@@ -1,13 +1,233 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="h-100" lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>The Social Network</title>
     <link rel="stylesheet" href="/dist/css/style.css" />
   </head>
-  <body>
-    <h1 class="test">test</h1>
+  <body class="d-flex flex-column h-100">
+    <header>
+      <!-- Fixed navbar -->
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">The Social Media</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarCollapse"
+            aria-controls="navbarCollapse"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#"
+                  >Homepage</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="profile.html">Profile</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="login.html">Login</a>
+              </li>
+            </ul>
+            <form class="d-flex" role="search">
+              <input
+                class="form-control me-2"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+              />
+              <button class="btn btn-outline-success" type="submit">
+                Search
+              </button>
+            </form>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main class="flex-shrink-0">
+      <div class="container">
+        <h1 class="mt-5">Recent activities</h1>
+      </div>
+      
+<div class="container bootdey">
+<div class="content-page">
+    
+    <div class="content">
+
+		<div class="row d-flex justify-content-center">
+			
+			
+			<div class="col-lg-6 col-md-8 col-sm-12">
+				<div class="widget widget-tabbed">
+					
+
+					<!-- Tab panes -->
+					<div class="tab-content">
+						
+						
+						<!-- Tab timeline -->
+						<div class="tab-pane animated active fadeInRight" id="my-timeline">
+							<div class="user-profile-content">
+								
+								<!-- Begin timeline -->
+								<div class="the-timeline">
+									<form role="form" class="post-to-timeline">
+										<textarea class="form-control" style="height: 70px;margin-bottom:10px;" placeholder="Whats on your mind..."></textarea>
+										
+										<div class="col-sm-6 text-right"><button type="submit" class="btn btn-primary">Post</button></div>
+										</div>
+									</form>
+									
+									
+								</div><!-- End div .the-timeline -->
+								<!-- End timeline -->
+							</div><!-- End div .user-profile-content -->
+						</div><!-- End div .tab-pane -->
+						<!-- End Tab timeline -->
+						
+						<!-- Tab about -->
+						<div class="tab-pane animated fadeInRight" id="about">
+							
+						
+						
+						<!-- Tab user activities -->
+						<div class="tab-pane animated fadeInRight" id="user-activities">
+							<div class="scroll-user-widget">
+								
+							</div><!-- End div .scroll-user-widget -->
+						</div><!-- End div .tab-pane -->
+						<!-- End Tab user activities -->
+						
+						<!-- Tab user messages -->
+						<div class="tab-pane animated fadeInRight" id="mymessage">
+							<div class="scroll-user-widget">
+								<ul class="media-list">
+								  <li class="d-flex">
+									<a class="flex-shrink-0" href="#fakelink">
+									  <img class="media-object user-message" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="Avatar">
+									</a>
+									<div class="flex-grow-1 ms-3">
+									  <h4 class="fs-5"><a href="#fakelink">John Doe</a> <small>Just now</small></h4>
+									  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+									  <hr>
+									</div>									
+								  </li>								  
+								  <li class="d-flex">
+									<a class="flex-shrink-0" href="#fakelink">
+									  <img class="media-object user-message" src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="Avatar">
+									</a>
+									<div class="flex-grow-1 ms-3">
+									  <h4 class="fs-5"><a href="#fakelink">Annisa</a> <small>Yesterday at 04:00 AM</small></h4>
+									  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam rhoncus</p>
+									  <hr>
+									</div>
+								  </li>
+								  <li class="d-flex">
+									<a class="flex-shrink-0" href="#fakelink">
+									  <img class="media-object user-message" src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="Avatar">
+									</a>
+									<div class="flex-grow-1 ms-3">
+									  <h4 class="fs-5"><a href="#fakelink">Rusmanovski</a> <small>January 17, 2014 05:35 PM</small></h4>
+									  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+									  <hr>
+									</div>
+								  </li>
+								  <li class="d-flex">
+									<a class="flex-shrink-0" href="#fakelink">
+									  <img class="media-object user-message" src="https://bootdey.com/img/Content/avatar/avatar4.png" alt="Avatar">
+									</a>
+									<div class="flex-grow-1 ms-3">
+									  <h4 class="fs-5"><a href="#fakelink">Ari Rusmanto</a> <small>January 17, 2014 05:35 PM</small></h4>
+									  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+									  <hr>
+									</div>
+								  </li>
+								  <li class="d-flex">
+									<a class="flex-shrink-0" href="#fakelink">
+									  <img class="media-object user-message" src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="Avatar">
+									</a>
+									<div class="flex-grow-1 ms-3">
+									  <h4 class="fs-5"><a href="#fakelink">Jenny Doe</a> <small>January 17, 2014 05:35 PM</small></h4>
+									  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+									  <hr>
+									</div>
+								  </li>
+								  <li class="d-flex">
+									<a class="flex-shrink-0" href="#fakelink">
+									  <img class="media-object user-message" src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="Avatar">
+									</a>
+									<div class="flex-grow-1 ms-3">
+									  <h4 class="fs-5"><a href="#fakelink">John Doe</a> <small>Just now</small></h4>
+									  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+									  <hr>
+									</div>
+								  </li>
+								  <li class="d-flex">
+									<a class="flex-shrink-0" href="#fakelink">
+									  <img class="media-object user-message" src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="Avatar">
+									</a>
+									<div class="flex-grow-1 ms-3">
+									  <h4 class="fs-5"><a href="#fakelink">Annisa</a> <small>Yesterday at 04:00 AM</small></h4>
+									  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam rhoncus</p>
+									  <hr>
+									</div>
+								  </li>
+								  <li class="d-flex">
+									<a class="flex-shrink-0" href="#fakelink">
+									  <img class="media-object user-message" src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="Avatar">
+									</a>
+									<div class="flex-grow-1 ms-3">
+									  <h4 class="fs-5"><a href="#fakelink">Rusmanovski</a> <small>January 17, 2014 05:35 PM</small></h4>
+									  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+									  <hr>
+									</div>
+								  </li>
+								  <li class="d-flex">
+									<a class="flex-shrink-0" href="#fakelink">
+									  <img class="media-object user-message" src="https://bootdey.com/img/Content/avatar/avatar4.png" alt="Avatar">
+									</a>
+									<div class="flex-grow-1 ms-3">
+									  <h4 class="fs-5"><a href="#fakelink">Ari Rusmanto</a> <small>January 17, 2014 05:35 PM</small></h4>
+									  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+									  <hr>
+									</div>
+								  </li>
+								  <li class="d-flex">
+									<a class="flex-shrink-0" href="#fakelink">
+									  <img class="media-object user-message" src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="Avatar">
+									</a>
+									<div class="flex-grow-1 ms-3">
+									  <h4 class="fs-5"><a href="#fakelink">Jenny Doe</a> <small>January 17, 2014 05:35 PM</small></h4>
+									  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+									  <hr>
+									</div>
+								  </li>
+								</ul>
+							</div><!-- End div .scroll-user-widget -->
+						</div><!-- End div .tab-pane -->
+						<!-- End Tab user messages -->
+					</div><!-- End div .tab-content -->
+				</div><!-- End div .box-info -->
+			</div>
+		</div>
+	</div>	
+</div>
+    </main>
+    <footer class="footer mt-auto py-3 bg-light">
+      <div class="container">
+        <span class="text-muted">The Social Media Company.</span>
+      </div>
+    </footer>
+
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>

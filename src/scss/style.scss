@@ -1,9 +1,7 @@
-$blue: blue;
+@import "variables.scss";
 
-.test {
-  display: block;
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
 
-  &-button {
-    background-color: $blue;
-  }
-}
+@import "components/header.scss";
+
+@import "components/homepage.scss";
