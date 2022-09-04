@@ -17,37 +17,9 @@ body {
   margin-bottom: 0;
 }
 
-@media (max-width: 767px) {
-  .profile-page .profile-header .cover figure {
-    height: 110px;
-    overflow: hidden;
-  }
-}
-
-@media (min-width: 2400px) {
-  .profile-page .profile-header .cover figure {
-    height: 280px;
-    overflow: hidden;
-  }
-}
-
 .profile-page .profile-header .cover figure img {
   border-radius: 0.25rem 0.25rem 0 0;
   width: 100%;
-}
-
-@media (max-width: 767px) {
-  .profile-page .profile-header .cover figure img {
-    -webkit-transform: scale(2);
-    transform: scale(2);
-    margin-top: 15px;
-  }
-}
-
-@media (min-width: 2400px) {
-  .profile-page .profile-header .cover figure img {
-    margin-top: -55px;
-  }
 }
 
 .profile-page .profile-header .cover .gray-shade {
@@ -72,12 +44,6 @@ body {
 .profile-page .profile-header .cover .cover-body .profile-pic {
   border-radius: 50%;
   width: 100px;
-}
-
-@media (max-width: 767px) {
-  .profile-page .profile-header .cover .cover-body .profile-pic {
-    width: 70px;
-  }
 }
 
 .profile-page .profile-header .cover .cover-body .profile-name {
