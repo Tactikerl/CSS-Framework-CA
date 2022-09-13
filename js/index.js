@@ -1,6 +1,6 @@
-console.log("test");
 const tokenKey = localStorage.getItem("tokenName");
-console.log(tokenKey);
+
+const postsContainer = document.querySelector("#postsContainer");
 
 var myHeaders = new Headers();
 myHeaders.append("Authorization", `Bearer ${tokenKey}`);
@@ -16,5 +16,12 @@ fetch(
   requestOptions
 )
   .then((response) => response.json())
-  .then((result) => console.log(result))
+  .then((result) => createHTML(result))
   .catch((error) => console.log("error", error));
+
+function createHTML(result) {
+  result.forEach(function (getPosts) {
+    postsContainer.innerHTML += `<div><a href="/#" <div class=""><h4>${getPosts.author.name}</h4></a>
+    <h5>${getPosts.title}</h5><p>${getPosts.body}</p></div></div>`;
+  });
+}
