@@ -1,0 +1,27 @@
+<li class="d-flex" id="listObject">
+    <a class="flex-shrink-0" href="#fakelink">
+        <img class="media-object user-message"
+            src="${avatarUrl}" alt="Avatar">
+    </a>
+    <div class="flex-grow-1 ms-3">
+        <h4 class="fs-5">
+            <a href="#fakelink">
+                ${getPosts.author.name}
+            </a>
+        </h4>
+        <a href="/post.html?post=${getPosts.id}">
+            <h5 class"fs-5">
+                ${getPosts.title}
+            </h5>
+        </a>
+        <h6 class="fs-6">
+            <small>
+                ${date.toLocaleDateString("en-US", options)}
+            </small>
+        </h6>
+        <p>
+            ${getPosts.body}
+        </p>
+        <hr>
+    </div>
+</li>

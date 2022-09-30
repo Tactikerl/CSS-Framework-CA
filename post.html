@@ -11,8 +11,6 @@
 	<link rel="stylesheet" href="/dist/css/style.css" />
 	<link rel="stylesheet"
 		href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-
-
 </head>
 
 <body class="d-flex flex-column mh-vh-100">
@@ -21,10 +19,9 @@
 			class="navbar navbar-expand-md navbar-dark sticky-top bg-dark">
 			<div class="container-fluid"
 				id="navbarContainer">
-				<a class="navbar-brand" href="#"
+				<a class="navbar-brand" href="/index.html"
 					id="loginId">The Social
 					Media</a>
-
 				<button class="navbar-toggler" type="button"
 					data-bs-toggle="collapse"
 					data-bs-target="#navbarCollapse"
@@ -41,7 +38,7 @@
 						<li class="nav-item">
 							<a class="nav-link active"
 								aria-current="page"
-								href="/">Homepage</a>
+								href="/index.html">Homepage</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link"
@@ -66,9 +63,6 @@
 		</nav>
 	</header>
 	<main class="flex-shrink-0">
-		<div class="container">
-			<h1 class="mt-5">Recent activities</h1>
-		</div>
 		<div class="container bootdey">
 			<div class="content-page">
 				<div class="content">
@@ -85,49 +79,24 @@
 											class="user-profile-content">
 											<div
 												class="the-timeline">
-												<form
-													role="form"
-													class="post-to-timeline"
-													id="createPost">
-													<input
-														class="form-control"
-														placeholder="Title your thoughts?"
-														id="inputTitle" />
-													<input
-														class="form-control"
-														style="height: 70px;margin-bottom:10px;"
-														placeholder="Whats on your mind..."
-														id="inputBody" />
-													<div
-														class="col-sm-6 text-right">
-														<button
-															type="submit"
-															class="btn
-														btn-primary">Post</button>
-													</div>
-												</form>
+
 											</div>
 										</div>
 									</div>
 								</div>
-								<div class="tab-pane animated fadeInRight"
-									id="about">
-									<div class="tab-pane animated fadeInRight"
-										id="user-activities">
-										<div
-											class="scroll-user-widget">
-										</div>
+								<div
+									class="scroll-user-widget">
+									<div class="updatePost">
 									</div>
-									<div class="tab-pane animated fadeInRight"
-										id="mymessage">
-										<div
-											class="scroll-user-widget">
-											<ul class="media-list"
-												id="postsContainer">
+									<ul class="media-list"
+										id="post">
 
-											</ul>
-										</div>
+									</ul>
+									<div
+										id="updateContainer">
 									</div>
+								</div>
+								<div id="postComments">
 								</div>
 							</div>
 						</div>
@@ -144,8 +113,8 @@
 	</footer>
 	<script
 		src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-	<script src="/js/index.js" type="module"></script>
-	<script src="/js/createPosts.js" type="module"></script>
+	<script src="/js/post.js" type="module"></script>
+
 </body>
 
 </html>
