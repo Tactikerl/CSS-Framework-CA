@@ -1,4 +1,6 @@
-import { posts as fetchedPosts, replacePosts } from "./currentPosts.js";
+import { posts as fetchedPosts, replacePosts } from "./currentPosts.mjs";
+
+import { validURL } from "./utils.mjs";
 
 const postsContainer = document.querySelector("#postsContainer");
 
@@ -7,7 +9,7 @@ const loginID = document.querySelector("#loginId");
 const token = localStorage.getItem("token");
 const userName = localStorage.getItem("username");
 
-// Login ID shown in banner
+// Login ID shown in banner --- Move to utils.js
 if (token !== null) {
   loginID.innerHTML = `<a class="navbar-brand" href="#" id="loginId">The Social
                         Media<h5>Logged in as ${userName}</h5></a>`;
@@ -38,7 +40,7 @@ if (token) {
     <a href="/register.html" class="nav-link">Register</a>`;
 }
 
-//Fetch for token API key
+//Fetch for token API key -- Move to api.js
 let myHeaders = new Headers();
 myHeaders.append("Authorization", `Bearer ${token}`);
 
@@ -71,14 +73,14 @@ function renderPosts(posts) {
       minute: "2-digit",
     };
 
-    // showing default avatar/profile image on page
+    // showing default avatar/profile image on page -- move to utils.js
     let avatarUrl =
       "https://st3.depositphotos.com/1767687/16607/v/450/depositphotos_166074422-stock-illustration-default-avatar-profile-icon-grey.jpg";
     if (validURL(getPosts.author.avatar)) {
       avatarUrl = getPosts.author.avatar;
     }
 
-    //Rendering posts on page
+    //Rendering posts on page  -- move to postRendering.js
     postsContainer.innerHTML += `<li class="d-flex" id="listObject">
     <a class="flex-shrink-0" href="#fakelink">
         <img class="media-object user-message"
@@ -109,7 +111,8 @@ function renderPosts(posts) {
   });
 }
 
-function validURL(str) {
+// Moved to utils.js
+/*function validURL(str) {
   var pattern = new RegExp(
     "^(https?:\\/\\/)?" + // protocol
       "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" + // domain name
@@ -120,8 +123,9 @@ function validURL(str) {
     "i"
   ); // fragment locator
   return !!pattern.test(str);
-}
+}*/
 
+// Move to postFeedSearch.js
 function search(event) {
   event.preventDefault();
 
@@ -138,6 +142,7 @@ function search(event) {
   renderPosts(postFound);
 }
 
+// Move to postFeedSearch.js
 const searchForm = document.getElementById("search");
 
 if (searchForm) {

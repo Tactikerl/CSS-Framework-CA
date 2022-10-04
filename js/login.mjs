@@ -24,13 +24,15 @@ function login(event) {
   fetch("https://nf-api.onrender.com/api/v1/social/auth/login", requestOptions)
     .then((response) => response.json())
     .then((result) => {
-      if (result !== null) {
-        const token = result.accessToken;
-        localStorage.setItem("token", token);
-        const userName = result.name;
-        localStorage.setItem("username", userName);
-        document.location = "/index.html";
+      if (result.accessToken == undefined) {
+        alert(result.message);
+        return;
       }
+      const token = result.accessToken;
+      localStorage.setItem("token", token);
+      const userName = result.name;
+      localStorage.setItem("username", userName);
+      document.location = "/index.html";
     })
     .catch((error) => console.log("error", error));
 }

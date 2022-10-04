@@ -1,4 +1,4 @@
-import { validURL } from "./utils.js";
+import { validURL } from "./utils.mjs";
 
 const token = localStorage.getItem("token");
 const userName = localStorage.getItem("username");

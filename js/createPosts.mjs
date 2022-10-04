@@ -1,5 +1,5 @@
-import { addToPosts } from "./currentPosts.js";
-import { validURL } from "./utils.js";
+import { addToPosts } from "./currentPosts.mjs";
+import { validURL } from "./utils.mjs";
 
 function submitPost(event) {
   event.preventDefault();
