@@ -1,6 +1,19 @@
 import { validURL } from "./utils.mjs";
 import { dateOptions } from "./utils.mjs";
+const urlSearchParams = new URLSearchParams(window.location.search);
+const postId = urlSearchParams.get("post");
 let currentPost = [];
+
+const token = localStorage.getItem("token");
+
+const myHeaders = new Headers();
+myHeaders.append("Authorization", `Bearer ${token}`);
+myHeaders.append("Content-Type", "application/json");
+
+const requestOptions = {
+  method: "GET",
+  headers: myHeaders,
+};
 
 /**
  *  function for rendering all available post on index page
@@ -57,7 +70,7 @@ export function renderPosts(posts) {
 
 /**
  * function for rendering a single post on a dedicated page.
- * @param {*} post
+ * @param {object} post - retrieves the selected post from the API
  */
 export function renderPost(post) {
   const date = new Date(post.created);
@@ -101,8 +114,8 @@ export function renderPost(post) {
 }
 
 /**
- *
- * @param {*} comments
+ * Renders the comments on the index.html page
+ * @param {object} comments - gets the array of comments from the API
  */
 export function renderComments(comments) {
   for (let i = 0; i < comments.length; i++) {
@@ -129,9 +142,9 @@ export function renderComments(comments) {
 }
 
 /**
- *
+ * Enables the "update" and "delete" button on the page if the user is logged in and the creator of the post.
  */
-export function addUpdate() {
+export function addUpdate(post) {
   document.querySelector(
     "#updateContainer"
   ).innerHTML = `<button id="update" class="btn btn-primary">Edit post</button>
@@ -140,7 +153,7 @@ export function addUpdate() {
 
   const updateButton = document.getElementById("update");
   updateButton.addEventListener("click", () => {
-    addUpdateForm();
+    addUpdateForm(post);
   });
 
   const deleteButton = document.getElementById("delete");
@@ -150,17 +163,17 @@ export function addUpdate() {
 }
 
 /**
- *
+ * Adds the update text box for the editing of the title and post
  */
-export function addUpdateForm() {
+export function addUpdateForm(post) {
   document.querySelector(".updatePost").innerHTML = `<form id="updatePost">
       <div class="mb-3">
         <label for="inputTitle" class="form-label">Title</label>
-        <input type="text" class="form-control" id="inputTitle" value="${currentPost.title}" />
+        <input type="text" class="form-control" id="inputTitle" value="${post.title}" />
       </div>
       <div class="mb-3 mt-3">
         <label for="inputBody">Body:</label>
-        <textarea class="form-control" rows="5" id="inputBody" name="text">${currentPost.body}</textarea>
+        <textarea class="form-control" rows="5" id="inputBody" name="text">${post.body}</textarea>
       </div>
         <button type="submit" class="btn btn-primary">Confirm</button>
     </form>`;
@@ -173,9 +186,9 @@ export function addUpdateForm() {
 }
 
 /**
- *
- * @param {*} event
- * @returns
+ * submits the changes made to the post and updates the post to display the changes
+ * @param {event} event - on click event for the form.
+ * @returns - if the guards in the function is not passed the function will return blank.
  */
 export function submitUpdatedPost(event) {
   event.preventDefault();
@@ -196,10 +209,10 @@ export function submitUpdatedPost(event) {
 }
 
 /**
- *
- * @param {*} postId
- * @param {*} title
- * @param {*} body
+ *  Sends the changes to the post to the API so that it can be updated
+ * @param {number} postId - the id number for the post on the API
+ * @param {string} title - The title text of the post
+ * @param {string} body - The body text of the post.
  */
 export function updatePost(postId, title, body) {
   var raw = JSON.stringify({
@@ -227,8 +240,8 @@ export function updatePost(postId, title, body) {
 }
 
 /**
- *
- * @param {*} postId
+ * Lets the user delete their own posts
+ * @param {number} postId - The id number for the post on the API.
  */
 export function deletePost(postId) {
   var requestOptionsDelete = {
