@@ -10,6 +10,9 @@ const postId = urlSearchParams.get("post");
 
 let currentPost = [];
 
+/**
+ * Authentication of API token and what type of content the API contains.
+ */
 const myHeaders = new Headers();
 myHeaders.append("Authorization", `Bearer ${token}`);
 myHeaders.append("Content-Type", "application/json");
@@ -19,6 +22,9 @@ const requestOptions = {
   headers: myHeaders,
 };
 
+/**
+ * Fetches the array from the API and runs the functions to render the posts
+ */
 fetch(
   `${API_SOCIAL_URL}${SOCIAL_POSTS}/${postId}${API_POSTS_PARAMS}`,
   requestOptions
