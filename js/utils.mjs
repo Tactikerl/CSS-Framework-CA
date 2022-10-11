@@ -69,12 +69,12 @@ export let avatarUrl =
 export function search(event) {
   event.preventDefault();
 
-  const searchTerm = document.getElementById("searchInput").value;
+  const searchTerm = document.getElementById("searchInput").value.toLowerCase();
 
   const postFound = fetchedPosts.filter(
     (post) =>
-      post.title.includes(searchTerm) ||
-      post.body.includes(searchTerm) ||
+      post.title.toLowerCase().includes(searchTerm) ||
+      post.body.toLowerCase().includes(searchTerm) ||
       post.author.name.includes(searchTerm)
   );
   postsContainer.innerHTML = "";

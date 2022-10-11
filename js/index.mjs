@@ -1,6 +1,7 @@
 import { posts as fetchedPosts, replacePosts } from "./currentPosts.mjs";
 import { renderPosts } from "./renderPosts.mjs";
 import { search } from "./utils.mjs";
+import { API_SOCIAL_URL, API_POSTS_PARAMS, SOCIAL_POSTS } from "./api.mjs";
 
 const postsContainer = document.querySelector("#postsContainer");
 
@@ -59,10 +60,7 @@ var requestOptions = {
 /**
  *
  */
-fetch(
-  "https://nf-api.onrender.com/api/v1/social/posts/?_author=true&_reactions=true&_comments=true",
-  requestOptions
-)
+fetch(`${API_SOCIAL_URL}${SOCIAL_POSTS}${API_POSTS_PARAMS}`, requestOptions)
   .then((response) => response.json())
   .then((posts) => {
     replacePosts(posts);
