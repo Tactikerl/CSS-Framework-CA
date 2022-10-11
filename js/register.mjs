@@ -1,12 +1,11 @@
-//
 import { API_SOCIAL_URL, SOCIAL_REGISTER } from "./api.mjs";
 import { login } from "./utils.mjs";
 
 /**
- * This function registers a new user to the API an logs them in automaticly, sending them to
+ * This function registers a new user to the API an logs them in automatically, sending them to
  * the index.html page where they can browse other users posts.
  * @param {SubmitEvent} event - When user clicks register button the submit event is run
- * @returns
+ * @returns - If guard is activated the function is stopped and returns blank with instructions to user on what to do.
  */
 function register(event) {
   event.preventDefault();
@@ -31,9 +30,6 @@ function register(event) {
     return;
   }
 
-  /**
-   *
-   */
   const myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
 

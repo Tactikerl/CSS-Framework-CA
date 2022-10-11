@@ -1,5 +1,5 @@
-import { validURL } from "./utils.mjs";
-import { dateOptions } from "./utils.mjs";
+import { validURL, dateOptions } from "./utils.mjs";
+import { API_SOCIAL_URL, SOCIAL_POSTS, API_POSTS_PARAMS } from "./api.mjs";
 const urlSearchParams = new URLSearchParams(window.location.search);
 const postId = urlSearchParams.get("post");
 let currentPost = [];
@@ -9,11 +9,6 @@ const token = localStorage.getItem("token");
 const myHeaders = new Headers();
 myHeaders.append("Authorization", `Bearer ${token}`);
 myHeaders.append("Content-Type", "application/json");
-
-const requestOptions = {
-  method: "GET",
-  headers: myHeaders,
-};
 
 /**
  *  function for rendering all available post on index page
@@ -232,7 +227,7 @@ export function updatePost(postId, title, body) {
     redirect: "follow",
   };
   fetch(
-    `https://nf-api.onrender.com/api/v1/social/posts/${postId}?_author=true`,
+    `${API_SOCIAL_URL}${SOCIAL_POSTS}${postId}?_author=true`,
     requestOptionsUpdate
   )
     .then((response) => response.json())

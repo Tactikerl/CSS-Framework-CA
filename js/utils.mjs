@@ -75,7 +75,7 @@ export function search(event) {
     (post) =>
       post.title.toLowerCase().includes(searchTerm) ||
       post.body.toLowerCase().includes(searchTerm) ||
-      post.author.name.includes(searchTerm)
+      post.author.name.toLowerCase().includes(searchTerm)
   );
   postsContainer.innerHTML = "";
 
