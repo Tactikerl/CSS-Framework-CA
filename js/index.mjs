@@ -9,12 +9,19 @@ const loginID = document.querySelector("#loginId");
 const token = localStorage.getItem("token");
 const userName = localStorage.getItem("username");
 
-// Login ID shown in banner --- Move to utils.js
+/**
+ * Checks if there is a valid validation token in local storage.
+ * if so, the banner will say "Logged in as *USERNAME*"
+ * */
 if (token !== null) {
   loginID.innerHTML = `<a class="navbar-brand" href="#" id="loginId">The Social
                         Media<h5>Logged in as ${userName}</h5></a>`;
 }
 
+/**
+ * similar to the above if statement, it checks for a valid token.
+ * if valid the navbar will display additional items for the user to navigate.
+ */
 const navItems = document.querySelector("#navItems");
 if (token) {
   navItems.innerHTML = `<li class="nav-item">
@@ -40,7 +47,6 @@ if (token) {
     <a href="/register.html" class="nav-link">Register</a>`;
 }
 
-//Fetch for token API key -- Move to api.js
 let myHeaders = new Headers();
 myHeaders.append("Authorization", `Bearer ${token}`);
 
@@ -50,6 +56,9 @@ var requestOptions = {
   redirect: "follow",
 };
 
+/**
+ *
+ */
 fetch(
   "https://nf-api.onrender.com/api/v1/social/posts/?_author=true&_reactions=true&_comments=true",
   requestOptions

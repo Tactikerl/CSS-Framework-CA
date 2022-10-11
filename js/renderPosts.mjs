@@ -31,6 +31,10 @@ export function renderPosts(posts) {
       minute: "2-digit",
     };
 
+    /**
+     * let - sets default avatar image.
+     *  if - if a user has no profile avatar this will override and set a the default avatar image.
+     */
     let avatarUrl =
       "https://st3.depositphotos.com/1767687/16607/v/450/depositphotos_166074422-stock-illustration-default-avatar-profile-icon-grey.jpg";
 

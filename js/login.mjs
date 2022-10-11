@@ -1,5 +1,10 @@
 import { login } from "./utils.mjs";
 
+/**
+ *
+ * @param {event} event Logs the user inn if they present a valid email and password that is registered to the API
+ * @returns - Guard set up to hinder empty input boxes.
+ */
 function loginUser(event) {
   event.preventDefault();
 
@@ -12,8 +17,15 @@ function loginUser(event) {
   login(userEmail, userPassword);
 }
 
-const searchForm = document.getElementById("loginUser");
+/**
+ * initializes the searchbar if the user is logged inn.
+ */
+function initSearchForm() {
+  const searchForm = document.getElementById("loginUser");
 
-if (searchForm) {
-  searchForm.addEventListener("submit", loginUser);
+  if (searchForm) {
+    searchForm.addEventListener("submit", loginUser);
+  }
 }
+
+initSearchForm();

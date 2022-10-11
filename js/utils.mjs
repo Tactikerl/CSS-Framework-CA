@@ -62,6 +62,10 @@ export function login(userEmail, userPassword) {
 export let avatarUrl =
   "https://st3.depositphotos.com/1767687/16607/v/450/depositphotos_166074422-stock-illustration-default-avatar-profile-icon-grey.jpg";
 
+/**
+ *
+ * @param {event} event - when user click the search icon or hits enter after filling out the search term, the function will run and find the posts with the written keyword, if available.
+ */
 export function search(event) {
   event.preventDefault();
 
