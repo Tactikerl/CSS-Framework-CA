@@ -2,6 +2,11 @@ import { API_SOCIAL_URL, SOCIAL_LOGIN } from "./api.mjs";
 import { posts as fetchedPosts, replacePosts } from "./currentPosts.mjs";
 import { renderPosts } from "./renderPosts.mjs";
 
+/**
+ *
+ * @param {string} str
+ * @returns
+ */
 export function validURL(str) {
   var pattern = new RegExp(
     "^(https?:\\/\\/)?" + // protocol

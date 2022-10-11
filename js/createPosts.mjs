@@ -1,6 +1,11 @@
 import { addToPosts } from "./currentPosts.mjs";
 import { validURL } from "./utils.mjs";
 
+/**
+ *
+ * @param {event} event on click event that sends the new post to the API
+ * @returns - guards set up to prevent the title and the body text to be empty, so that there are no blank posts created.
+ */
 function submitPost(event) {
   event.preventDefault();
 
@@ -38,10 +43,7 @@ function submitPost(event) {
     redirect: "follow",
   };
 
-  fetch(
-    "https://nf-api.onrender.com/api/v1/social/posts/?_author=true&_reactions=true&_comments=true",
-    requestOptions
-  )
+  fetch(`${API_SOCIAL_URL}${SOCIAL_POSTS}${API_POSTS_PARAMS}`, requestOptions)
     .then((response) => response.json())
     .then((getPosts) => {
       addToPosts(getPosts);
