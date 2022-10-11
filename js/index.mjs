@@ -27,9 +27,7 @@ if (token) {
     <a class="nav-link active" aria-current="page"
       href="/">Homepage</a>
   </li>
-  <li class="nav-item">
-      <a class="nav-link" href="/profile.html">Profile</a>
-  </li>
+  
   <li class="nav-item">
     <button class="btn btn-primary"
     id="logout">Logout</button>
