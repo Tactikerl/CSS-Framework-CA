@@ -1,6 +1,12 @@
 {
+  "tags": {
+    "allowUnknownTags": true,
+    "dictionaries": ["jsdoc", "closure"]
+  },
   "source": {
     "include": ["."],
+    "includePattern": ".(jsx|js|ts|tsx)$",
     "exclude": ["node_modules/"]
-  }
+  },
+  "sourceType": "module"
 }
