@@ -1,5 +1,5 @@
-import { replacePosts } from "./currentPosts.mjs";
-import { renderPosts } from "./renderPosts.mjs";
+import { posts as fetchedPosts, replacePosts } from "./currentPosts.mjs";
+import { renderPosts, sortList } from "./renderPosts.mjs";
 import { search } from "./utils.mjs";
 import { API_SOCIAL_URL, API_POSTS_PARAMS, SOCIAL_POSTS } from "./api.mjs";
 
@@ -47,7 +47,7 @@ if (token) {
 let myHeaders = new Headers();
 myHeaders.append("Authorization", `Bearer ${token}`);
 
-var requestOptions = {
+const requestOptions = {
   method: "GET",
   headers: myHeaders,
   redirect: "follow",
@@ -56,11 +56,34 @@ var requestOptions = {
 /**
  * Fetches the posts and renders them on the index page.
  */
+const btn = document.querySelector("#sortDate");
+const sortButtons = document.getElementsByName("sortBy");
+let shouldSort = false;
+btn.addEventListener("submit", (click) => {
+  click.preventDefault();
+
+  let posts = fetchedPosts;
+  let listToRender;
+  if (!sortButtons[0].checked) {
+    listToRender = sortList(posts);
+  } else {
+    listToRender = posts;
+  }
+  postsContainer.innerHTML = "";
+  renderPosts(listToRender);
+});
 fetch(`${API_SOCIAL_URL}${SOCIAL_POSTS}${API_POSTS_PARAMS}`, requestOptions)
   .then((response) => response.json())
   .then((posts) => {
     replacePosts(posts);
-    renderPosts(posts);
+    let listToRender;
+    //let listToRender = shouldSort ? sortList(posts) : posts;
+    if (shouldSort) {
+      listToRender = sortList(posts);
+    } else {
+      listToRender = posts;
+    }
+    renderPosts(listToRender);
   })
   .catch((error) => console.log("error", error));
 

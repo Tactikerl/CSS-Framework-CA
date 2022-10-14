@@ -1,5 +1,5 @@
 import { validURL, dateOptions } from "./utils.mjs";
-import { API_SOCIAL_URL, SOCIAL_POSTS, API_POSTS_PARAMS } from "./api.mjs";
+import { API_SOCIAL_URL, SOCIAL_POSTS } from "./api.mjs";
 const urlSearchParams = new URLSearchParams(window.location.search);
 const postId = urlSearchParams.get("post");
 let currentPost = [];
@@ -9,6 +9,12 @@ const token = localStorage.getItem("token");
 const myHeaders = new Headers();
 myHeaders.append("Authorization", `Bearer ${token}`);
 myHeaders.append("Content-Type", "application/json");
+
+export function sortList(list) {
+  return [...list]
+    .sort((a, b) => new Date(b.created) - new Date(a.created))
+    .reverse();
+}
 
 /**
  *  function for rendering all available post on index page

@@ -122,6 +122,33 @@
 										id="mymessage">
 										<div
 											class="scroll-user-widget">
+											<form
+												role="form"
+												class="sortByDate"
+												id="sortDate">
+												<p>Sort by:
+												</p>
+												<input
+													type="radio"
+													id="newPosts"
+													name="sortBy"
+													value="New">
+												<label
+													for="newPosts">New</label>
+												<input
+													type="radio"
+													name="sortBy"
+													id="oldPosts"
+													value="Old">
+												<label
+													for="oldPosts">Old</label>
+												<br>
+												<button
+													type="submit"
+													class="sort_btn
+														btn-primary">Sort</button>
+											</form>
+											<br>
 											<ul class="media-list"
 												id="postsContainer">
 
