@@ -8,7 +8,7 @@ import { login } from "./utils.mjs";
 function loginUser(event) {
   event.preventDefault();
 
-  const userEmail = document.getElementById("userEmail").value;
+  const userEmail = document.getElementById("userEmail").value.toLowerCase();
   const userPassword = document.getElementById("userPassword").value;
 
   if (!userEmail || !userPassword) {
