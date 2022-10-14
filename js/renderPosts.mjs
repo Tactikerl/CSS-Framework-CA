@@ -227,7 +227,7 @@ export function updatePost(postId, title, body) {
     redirect: "follow",
   };
   fetch(
-    `${API_SOCIAL_URL}${SOCIAL_POSTS}${postId}?_author=true`,
+    `${API_SOCIAL_URL}${SOCIAL_POSTS}/${postId}?_author=true`,
     requestOptionsUpdate
   )
     .then((response) => response.json())

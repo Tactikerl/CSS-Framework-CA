@@ -1,5 +1,6 @@
 import { addToPosts } from "./currentPosts.mjs";
 import { validURL } from "./utils.mjs";
+import { API_SOCIAL_URL, API_POSTS_PARAMS, SOCIAL_POSTS } from "./api.mjs";
 
 /**
  *

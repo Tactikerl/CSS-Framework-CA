@@ -14,7 +14,7 @@ function register(event) {
   const newUserEmail = document.getElementById("registerEmail").value;
   const newUserPassword = document.getElementById("registerPassword").value;
   const repeatPassword = document.getElementById("repeatPassword").value;
-  const newUserAvatar = document.getElementById("profileAvatar").value;
+  let newUserAvatar = document.getElementById("profileAvatar").value;
 
   /**
    * Guard set up to check if the new user have filled inn the requested info.
@@ -33,6 +33,9 @@ function register(event) {
   const myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
 
+  if (newUserAvatar === "") {
+    newUserAvatar = undefined;
+  }
   const raw = JSON.stringify({
     name: newUser,
     email: newUserEmail,
@@ -49,6 +52,10 @@ function register(event) {
   fetch(`${API_SOCIAL_URL}${SOCIAL_REGISTER}`, requestOptions)
     .then((response) => response.json())
     .then((newUser) => {
+      if (newUser.message) {
+        alert(newUser.message);
+        return;
+      }
       login(newUser.email, newUserPassword);
     });
 }
