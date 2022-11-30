@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "sass src/scss:dist/css",
     "watch": "sass --watch src/scss:dist/css & live-server",
-    "serve": "live-server"
+    "serve": "live-server",
+    "docs": "jsdoc -c ./conf.json -r"
   },
   "keywords": [
     "social",
@@ -18,6 +19,7 @@
   "author": "Karl-Morten Kvammen <karlmkvammen@hotmail.com>",
   "license": "ISC",
   "devDependencies": {
+    "jsdoc": "^3.6.11",
     "live-server": "^1.2.2",
     "sass": "^1.54.8"
   },

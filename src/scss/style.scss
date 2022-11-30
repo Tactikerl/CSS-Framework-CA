@@ -1,7 +1,9 @@
-@import "variables.scss";
+@import "_variables.scss";
+
+@import "components/_header.scss";
+
+@import "/src/scss/components/_homepage";
+
+@import "/src/scss/components/_register.scss";
 
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
-
-@import "components/header.scss";
-
-@import "components/homepage.scss";

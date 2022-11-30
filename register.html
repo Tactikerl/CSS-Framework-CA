@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html class="h-100" lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0" />
+    <title>Social Network</title>
+    <link rel="stylesheet" href="/dist/css/style.css" />
+</head>
+
+<body class="d-flex flex-column h-100">
+    <header>
+        <!-- Fixed navbar -->
+        <nav
+            class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">The Social
+                    Media</a>
+                <button class="navbar-toggler" type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarCollapse"
+                    aria-controls="navbarCollapse"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span
+                        class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse"
+                    id="navbarCollapse">
+                    <ul
+                        class="navbar-nav me-auto mb-2 mb-md-0">
+                    </ul>
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2"
+                            type="search"
+                            placeholder="Search"
+                            aria-label="Search" />
+                        <button
+                            class="btn btn-outline-success"
+                            type="submit">
+                            Search
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main class="flex-shrink-0">
+        <div
+            class="container pb-3 rounded bg-light col-lg-6 col-md-8 col-sm-12">
+            <h1 class="mt-5">Register User</h1>
+            <form id="formRegister">
+                <div class="mb-3 ">
+                    <label for="registerName"
+                        class="form-label">Name</label>
+                    <input type="text" name="name" required
+                        pattern="^[\w]+$"
+                        class="form-control"
+                        id="registerName" placeholder="Name"
+                        aria-describedby="emailLogin" />
+                    <div id="underTextName"
+                        class="form-text">
+                        Please enter your name or username.
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="avatar"
+                        class="form-label">Profile Avatar
+                    </label>
+                    <input type="url" name="avatar"
+                        class="form-control"
+                        id="profileAvatar" placeholder="url"
+                        aria-describedby="registerEmail" />
+                </div>
+                <div class="mb-3">
+                    <label for="registerEmail"
+                        class="form-label">Email
+                        Address</label>
+                    <input type="email" name="email"
+                        required
+                        pattern="^[\w\-.]+@(stud.)?noroff.no$"
+                        class="form-control"
+                        id="registerEmail"
+                        placeholder="Email"
+                        aria-describedby="registerEmail" />
+                    <div id="emailLogin" class="form-text">
+                        Please enter your Noroff email
+                        address.
+                    </div>
+                </div>
+                <div class="mb-3 ">
+                    <label for="registerPassword"
+                        class="form-label">Password</label>
+                    <input type="password"
+                        class="form-control"
+                        placeholder="Password"
+                        id="registerPassword" />
+                    <div id="underTextPassword"
+                        class="form-text">
+                        Your password must be at least 8
+                        characters long.
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="repeatPassword"
+                        class="form-label">Password</label>
+                    <input type="password"
+                        class="form-control"
+                        placeholder="Password"
+                        id="repeatPassword" />
+                    <div id="underTextRepeatPassword"
+                        class="form-text">
+                        Repeat your password.
+                    </div>
+                </div>
+
+                <div class="mb-3 form-check error">
+                    <input type="checkbox"
+                        class="form-check-input"
+                        id="checkAgree" />
+                    <label class="form-check-label"
+                        for="exampleCheck1">I agree to
+                        disagree</label>
+                </div>
+                <button type="submit"
+                    class="btn btn-primary"
+                    id="buttonRegister">Register
+                    user</button>
+                <button type="submit"
+                    class="btn btn-primary"
+                    id="buttonCancel">Cancel</button>
+            </form>
+        </div>
+    </main>
+    <footer class="footer mt-auto py-3 bg-light">
+        <div class="container">
+            <span class="text-muted">Place sticky footer
+                content here.</span>
+        </div>
+    </footer>
+    <script type="module" src="/js/register.mjs"></script>
+    <script type="module" src="/js/api.mjs"></script>
+    <script type="module" src="/js/login.mjs"></script>
+    <script
+        src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

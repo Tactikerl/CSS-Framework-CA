@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: renderPosts.mjs</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: renderPosts.mjs</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { validURL, dateOptions } from "./utils.mjs";
+import { API_SOCIAL_URL, SOCIAL_POSTS, API_POSTS_PARAMS } from "./api.mjs";
+const urlSearchParams = new URLSearchParams(window.location.search);
+const postId = urlSearchParams.get("post");
+let currentPost = [];
+
+const token = localStorage.getItem("token");
+
+const myHeaders = new Headers();
+myHeaders.append("Authorization", `Bearer ${token}`);
+myHeaders.append("Content-Type", "application/json");
+
+/**
+ *  function for rendering all available post on index page
+ * @param {object} posts - Gets the array object containing posts on the API
+ */
+export function renderPosts(posts) {
+  posts.forEach(function (getPosts) {
+    const date = new Date(getPosts.created);
+    const options = {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+    };
+
+    /**
+     * let - sets default avatar image.
+     *  if - if a user has no profile avatar this will override and set a the default avatar image.
+     */
+    let avatarUrl =
+      "https://st3.depositphotos.com/1767687/16607/v/450/depositphotos_166074422-stock-illustration-default-avatar-profile-icon-grey.jpg";
+
+    if (validURL(getPosts.author.avatar)) {
+      avatarUrl = getPosts.author.avatar;
+    }
+
+    postsContainer.innerHTML += `&lt;li class="d-flex" id="listObject">
+&lt;a class="flex-shrink-0" href="#fakelink">
+   &lt;img class="media-object user-message"
+       src="${avatarUrl}" alt="Avatar">
+&lt;/a>
+&lt;div class="flex-grow-1 ms-3">
+   &lt;h4 class="fs-5">
+       &lt;a href="#fakelink">
+           ${getPosts.author.name}
+       &lt;/a>
+   &lt;/h4>
+   &lt;a href="/post.html?post=${getPosts.id}">
+       &lt;h5 class"fs-5">
+           ${getPosts.title}
+       &lt;/h5>
+   &lt;/a>
+   &lt;h6 class="fs-6">
+       &lt;small>
+           ${date.toLocaleDateString("en-US", options)}
+       &lt;/small>
+   &lt;/h6>
+   &lt;p>
+       ${getPosts.body}
+   &lt;/p>
+   &lt;hr>
+&lt;/div>
+&lt;/li>`;
+  });
+}
+
+/**
+ * function for rendering a single post on a dedicated page.
+ * @param {object} post - retrieves the selected post from the API
+ */
+export function renderPost(post) {
+  const date = new Date(post.created);
+
+  let avatarUrl =
+    "https://st3.depositphotos.com/1767687/16607/v/450/depositphotos_166074422-stock-illustration-default-avatar-profile-icon-grey.jpg";
+  if (validURL(post.author.avatar)) {
+    avatarUrl = post.author.avatar;
+  }
+
+  document.getElementById(
+    "post"
+  ).innerHTML = `&lt;li class="d-flex" id="listObject">
+      &lt;a class="flex-shrink-0" href="#fakelink">
+          &lt;img class="media-object user-message"
+              src="${avatarUrl}" alt="Avatar">
+      &lt;/a>
+      &lt;div class="flex-grow-1 ms-3">
+          &lt;h4 class="fs-5">
+              &lt;a href="#fakelink">
+                  ${post.author.name}
+              &lt;/a>
+          &lt;/h4>        
+            &lt;h5 class"fs-5">
+                  ${post.title}
+            &lt;/h5>        
+          &lt;h6 class="fs-6">
+              &lt;small>
+                  ${date.toLocaleDateString("en-US", dateOptions)}
+              &lt;/small>
+          &lt;/h6>
+          &lt;p>
+              ${post.body}
+          &lt;/p>
+          
+          &lt;hr>
+                
+          &lt;/div>
+      &lt;/div>
+  &lt;/li>`;
+}
+
+/**
+ * Renders the comments on the index.html page
+ * @param {object} comments - gets the array of comments from the API
+ */
+export function renderComments(comments) {
+  for (let i = 0; i &lt; comments.length; i++) {
+    const comment = comments[i];
+    const date = new Date(comment.created);
+
+    document.getElementById("postComments").innerHTML += `&lt;div>
+        &lt;li>
+          &lt;ul>
+            &lt;div>
+              &lt;hr>
+                &lt;div>
+                  &lt;p>${comment.body}
+                  &lt;/p>
+                &lt;/div>
+                  posted by ${comment.owner}
+            &lt;/div>  
+              &lt;small>${date.toLocaleDateString("en-US", dateOptions)}
+            &lt;/small>
+          &lt;/ul>
+        &lt;/li>
+      &lt;/div>`;
+  }
+}
+
+/**
+ * Enables the "update" and "delete" button on the page if the user is logged in and the creator of the post.
+ */
+export function addUpdate(post) {
+  document.querySelector(
+    "#updateContainer"
+  ).innerHTML = `&lt;button id="update" class="btn btn-primary">Edit post&lt;/button>
+    &lt;button id="delete" class="btn btn-danger">Delete post&lt;/button>
+    `;
+
+  const updateButton = document.getElementById("update");
+  updateButton.addEventListener("click", () => {
+    addUpdateForm(post);
+  });
+
+  const deleteButton = document.getElementById("delete");
+  deleteButton.addEventListener("click", () => {
+    deletePost(postId);
+  });
+}
+
+/**
+ * Adds the update text box for the editing of the title and post
+ */
+export function addUpdateForm(post) {
+  document.querySelector(".updatePost").innerHTML = `&lt;form id="updatePost">
+      &lt;div class="mb-3">
+        &lt;label for="inputTitle" class="form-label">Title&lt;/label>
+        &lt;input type="text" class="form-control" id="inputTitle" value="${post.title}" />
+      &lt;/div>
+      &lt;div class="mb-3 mt-3">
+        &lt;label for="inputBody">Body:&lt;/label>
+        &lt;textarea class="form-control" rows="5" id="inputBody" name="text">${post.body}&lt;/textarea>
+      &lt;/div>
+        &lt;button type="submit" class="btn btn-primary">Confirm&lt;/button>
+    &lt;/form>`;
+
+  const form = document.getElementById("updatePost");
+
+  if (form) {
+    form.addEventListener("submit", submitUpdatedPost);
+  }
+}
+
+/**
+ * submits the changes made to the post and updates the post to display the changes
+ * @param {event} event - on click event for the form.
+ * @returns - if the guards in the function is not passed the function will return blank.
+ */
+export function submitUpdatedPost(event) {
+  event.preventDefault();
+
+  const title = document.getElementById("inputTitle").value;
+
+  const body = document.getElementById("inputBody").value;
+
+  if (!title || !body) {
+    return;
+  }
+
+  if (body.length &lt; 10) {
+    return;
+  }
+
+  updatePost(postId, title, body);
+}
+
+/**
+ *  Sends the changes to the post to the API so that it can be updated
+ * @param {number} postId - the id number for the post on the API
+ * @param {string} title - The title text of the post
+ * @param {string} body - The body text of the post.
+ */
+export function updatePost(postId, title, body) {
+  var raw = JSON.stringify({
+    title: title,
+    body: body,
+  });
+  console.log();
+
+  var requestOptionsUpdate = {
+    method: "PUT",
+    headers: myHeaders,
+    body: raw,
+    redirect: "follow",
+  };
+  fetch(
+    `${API_SOCIAL_URL}${SOCIAL_POSTS}${postId}?_author=true`,
+    requestOptionsUpdate
+  )
+    .then((response) => response.json())
+    .then((post) => {
+      currentPost = post;
+      document.querySelector(".updatePost").innerHTML = "";
+      renderPost(currentPost);
+    });
+}
+
+/**
+ * Lets the user delete their own posts
+ * @param {number} postId - The id number for the post on the API.
+ */
+export function deletePost(postId) {
+  var requestOptionsDelete = {
+    method: "DELETE",
+    headers: myHeaders,
+  };
+
+  fetch(
+    `https://nf-api.onrender.com/api/v1/social/posts/${postId}`,
+    requestOptionsDelete
+  )
+    .then((response) => response.json())
+    .then(() => (document.location = "/index.html"));
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addUpdate">addUpdate</a></li><li><a href="global.html#addUpdateForm">addUpdateForm</a></li><li><a href="global.html#deletePost">deletePost</a></li><li><a href="global.html#initSearchForm">initSearchForm</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#loginUser">loginUser</a></li><li><a href="global.html#myHeaders">myHeaders</a></li><li><a href="global.html#navItems">navItems</a></li><li><a href="global.html#register">register</a></li><li><a href="global.html#renderComments">renderComments</a></li><li><a href="global.html#renderPost">renderPost</a></li><li><a href="global.html#renderPosts">renderPosts</a></li><li><a href="global.html#search">search</a></li><li><a href="global.html#submitPost">submitPost</a></li><li><a href="global.html#submitUpdatedPost">submitUpdatedPost</a></li><li><a href="global.html#updatePost">updatePost</a></li><li><a href="global.html#validURL">validURL</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Wed Oct 12 2022 15:16:14 GMT+0200 (Central European Summer Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
